@@ -9,9 +9,9 @@
 
 If you use webpack and want your extension to run on both Firefox and all Chromium-based browsers, use this plugin.
 
-Forget manually polyfilling every extension page you want to develop. Supports Mozilla's [WebExtension browser API Polyfill](https://github.com/mozilla/webextension-polyfill) on every file declared in your manifest file. **Including in background and content scripts**. Zero-config for that 👀 👀 👀
+The polyfill allows extensions that use the Promise-based WebExtension/BrowserExt API via Mozilla's [WebExtension browser API Polyfill](https://github.com/mozilla/webextension-polyfill), being standardized by the W3 Browser Extensions group to run on Chromium-based browsers with minimal or no changes. [See the polyfill docs](https://github.com/mozilla/webextension-polyfill/#webextension-browser-api-polyfill) for specific info.
 
-The polyfill allows extensions that use the Promise-based WebExtension/BrowserExt API being standardized by the W3 Browser Extensions group to run on Google Chrome with minimal or no changes. [See the polyfill docs](https://github.com/mozilla/webextension-polyfill/#webextension-browser-api-polyfill) for specific info.
+Forget manual _polyfilling_. Adds full polyfill support on every file declared in your manifest file. **Including in background and content scripts**. Zero-config for that.
 
 ## Installation
 
@@ -36,7 +36,8 @@ module.exports {
 
 ## How does it work?
 
-Injects the polyfill file at the same level as your manifest. Suppose you have background or content scripts declared in your manifest file. In that case, a link to the polyfill will also be provided by adding it to the manifest.
+Injects the polyfill file at the same folder path level as your manifest file. For background and content scripts declared in your manifest file, a link to the polyfill will also be added to the manifest file at [compile](https://webpack.js.org/api/compiler-hooks/#compile) time.
+
 ## API
 
 ### new BrowserExtensionPolyfill(manifestFilePath)
