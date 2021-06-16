@@ -4,7 +4,7 @@ const writePolyfillToScripts = require('./steps/writePolyfillToManifestScripts')
 const writeScriptTagToPage = require('./steps/writeScriptTagToPage')
 const manifestPages = require('./fileReaders/manifestPages')
 class BrowserExtensionPolyfill {
-  constructor (extensionPath) {
+  constructor ({extensionPath}) {
     // User-defined options
     this.extensionPath = extensionPath
   }

@@ -1,5 +1,6 @@
 const path = require('path')
 
+const BrowserExtensionPolyfill = require('webpack-browser-extension-polyfill')
 const OpenChromeExtension = require('webpack-run-chrome-extension')
 
 module.exports = {
@@ -12,6 +13,9 @@ module.exports = {
     ]
   },
   plugins: [
+    new BrowserExtensionPolyfill({
+      extensionPath: path.resolve(__dirname, '../fixtures')
+    }),
     new OpenChromeExtension({
       extensionPath: path.resolve(__dirname, '../fixtures')
     })

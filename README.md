@@ -28,7 +28,7 @@ const BrowserExtensionPolyfill = require('webpack-browser-extension-polyfill')
 
 module.exports {
   plugins: [
-    new BrowserExtensionPolyfill(/* <path-to-manifest-file> */)
+    new BrowserExtensionPolyfill({extensionPath: /* <path-to-manifest-file> */})
   ]
 }
 
