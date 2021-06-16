@@ -26,9 +26,9 @@ class BrowserExtensionPolyfill {
 
         // For each page declared in the manifest file,
         // we want to have a script tag pointing to the polyfill
-        // for (const pathToPageDeclared of pagesDeclared) {
-        //   writeScriptTagToPage(this.extensionPath, pathToPageDeclared)
-        // }
+        for (const pathToPageDeclared of pagesDeclared) {
+          writeScriptTagToPage(this.extensionPath, pathToPageDeclared)
+        }
         done()
       }
     )

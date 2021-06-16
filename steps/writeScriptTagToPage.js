@@ -6,11 +6,11 @@ const resolveManifest = require('../resolvers/resolveManifest')
 const {resolvePolyfillPathRelativeToFile} = require('../resolvers/resolvePolyfill')
 
 module.exports = function (extensionPath, filePath) {
-  const manifestPath = resolveManifest(extensionPath)
-  const polyfillPath = resolvePolyfillPathRelativeToFile(manifestPath, filePath)
-
   // Do nothing if there's nothing to do ;P
   if (Array.isArray(filePath)) return
+
+  const manifestPath = resolveManifest(extensionPath)
+  const polyfillPath = resolvePolyfillPathRelativeToFile(manifestPath, filePath)
 
   const polyfillPathRelativeToFile = path.relative(
     path.dirname(filePath),

@@ -1,11 +1,9 @@
-const fs = require('fs')
 const path = require('path')
-const readline = require('readline')
 
-const webextensionPolyfill = require
-  .resolve('webextension-polyfill/dist/browser-polyfill.min')
+const resolveManifest = require('../../resolvers/resolveManifest')
 
-module.exports = async function (manifestPath) {
+module.exports = function (extensionPath) {
+  const manifestPath = resolveManifest(extensionPath)
   const manifest = require(manifestPath)
 
   if (
@@ -14,40 +12,10 @@ module.exports = async function (manifestPath) {
     !manifest.browser_action.default_popup
   ) return []
 
-  const popupPage = path.resolve(
+  const filePath = path.resolve(
     path.dirname(manifestPath),
     manifest.browser_action.default_popup
   )
 
-  const patternsArray = []
-  const fileStream = fs.createReadStream(popupPage)
-  const lines = readline.createInterface({
-    input: fileStream,
-    crlfDelay: Infinity
-  })
-
-  for await (const line of lines) {
-    // Ensure line is a valid script element w/ a resource
-    const input = line
-      .match(/<script.*?\s+src=(?:'|")([^'">]+)(?:'|")/)
-
-    if (input) {
-      const [, source] = input
-
-      patternsArray.push(source)
-    }
-  }
-
-  // Do nothing for empty results
-  if (patternsArray.length === 0) return []
-
-  const resolvedPopupPage = patternsArray
-    .map(script => [
-      path.resolve(path.dirname(popupPage), script)
-    ])
-
-  return [
-    webextensionPolyfill,
-    resolvedPopupPage
-  ]
+  return filePath
 }
