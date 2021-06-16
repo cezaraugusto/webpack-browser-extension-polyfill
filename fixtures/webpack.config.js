@@ -8,12 +8,12 @@ module.exports = {
   watch: true,
   entry: {
     custom: [
-      path.resolve(__dirname, './demo-extension/custom/custom.js')
+      path.resolve(__dirname, '../fixtures/src/custom.js')
     ]
   },
   plugins: [
     new OpenChromeExtension({
-      extensionPath: path.resolve(__dirname, './demo-extension')
+      extensionPath: path.resolve(__dirname, '../fixtures')
     })
   ]
 }

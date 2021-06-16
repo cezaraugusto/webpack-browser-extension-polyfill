@@ -6,22 +6,27 @@ const webextensionPolyfill = require
 function resolvePolyfillPath (manifestPath) {
   // Returns the path relative to the extension
   return path.resolve(
-    manifestPath,
+    path.dirname(manifestPath),
     path.basename(webextensionPolyfill)
   )
 }
 
 function resolvePolyfillPathRelative (manifestPath) {
-  const polyfillPath = path.resolve(
-    path.dirname(manifestPath),
-    path.basename(webextensionPolyfill)
-  )
+  const polyfillPath = resolvePolyfillPath(manifestPath)
 
   // Returns the path relative to the extension
   return path.relative(path.dirname(manifestPath), polyfillPath)
 }
 
+function resolvePolyfillPathRelativeToFile (manifestPath, filePath) {
+  return path.relative(
+    path.dirname(filePath),
+    resolvePolyfillPath(manifestPath)
+  )
+}
+
 module.exports = {
   resolvePolyfillPath,
-  resolvePolyfillPathRelative
+  resolvePolyfillPathRelative,
+  resolvePolyfillPathRelativeToFile
 }

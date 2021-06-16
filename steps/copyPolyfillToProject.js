@@ -8,10 +8,9 @@ const {resolvePolyfillPath} = require('../resolvers/resolvePolyfill')
 module.exports = function (manifestPath) {
   const scriptPathWithPolyfill = resolvePolyfillPath(manifestPath)
 
-  console.log('fired1', scriptPathWithPolyfill)
   // If there is a polyfill already, don't try to add a new one
   if (fs.existsSync(scriptPathWithPolyfill)) return
-  console.log('fired2')
+
   fs.copyFileSync(
     webextensionPolyfill,
     scriptPathWithPolyfill,

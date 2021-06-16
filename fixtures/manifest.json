@@ -1,19 +1,18 @@
 {
 	"author": "Cezar Augusto",
 	"background": {
-		"persistent": false,
-    "page": "background/background.html"
+    "script": "src/background.js"
 	},
 	"chrome_url_overrides": {
-		"custom": "overrides/custom.html"
+		"newtab": "src/custom.html"
 	},
 	"content_scripts": [
 		{
 			"css": [
-				"content/custom.css"
+				"src/content.css"
 			],
 			"js": [
-				"content/custom.js"
+				"src/content.js"
 			],
 			"matches": [
 				"<all_urls>"
@@ -22,7 +21,6 @@
 		}
 	],
 	"content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
-	"default_locale": "en",
 	"description": "A demo extension",
 	"homepage_url": "https://github.com/cezaraugusto/demo-extension",
 	"manifest_version": 2,
