@@ -12,11 +12,11 @@ var currentBookmark;
 function updateIcon() {
   browser.browserAction.setIcon({
     path: currentBookmark ? {
-      19: "icons/star-filled-19.png",
-      38: "icons/star-filled-38.png"
+      19: "../public/star-filled-19.png",
+      38: "../public/star-filled-38.png"
     } : {
-      19: "icons/star-empty-19.png",
-      38: "icons/star-empty-38.png"
+      19: "../public/star-empty-19.png",
+      38: "../public/star-empty-38.png"
     },
     tabId: currentTab.id
   });
