@@ -1,7 +1,7 @@
 {
 	"author": "Cezar Augusto",
 	"background": {
-    "script": "src/background.js"
+    "scripts": ["src/background.js"]
 	},
 	"chrome_url_overrides": {
 		"newtab": "src/custom.html"
@@ -26,8 +26,17 @@
 	"manifest_version": 2,
   "name": "Demo extension",
 	"permissions": [
-		"tabs"
+		"tabs",
+    "bookmarks"
 	],
 	"version": "1.0",
-	"version_name": ""
+	"version_name": "",
+  "icons": {
+    "48": "icons/bookmark-it.png",
+    "96": "icons/bookmark-it@2x.png"
+  },
+  "browser_action": {
+    "default_icon": "icons/star-empty-38.png",
+    "default_title": "Bookmark it!"
+  }
 }
