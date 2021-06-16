@@ -1,11 +1,13 @@
 const fs = require('fs')
+const resolveManifest = require('../resolvers/resolveManifest')
 
 const webextensionPolyfill = require
   .resolve('webextension-polyfill/dist/browser-polyfill.min')
 
 const {resolvePolyfillPath} = require('../resolvers/resolvePolyfill')
 
-module.exports = function (manifestPath) {
+module.exports = function (extensionPath) {
+  const manifestPath = resolveManifest(extensionPath)
   const scriptPathWithPolyfill = resolvePolyfillPath(manifestPath)
 
   // If there is a polyfill already, don't try to add a new one

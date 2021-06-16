@@ -1,3 +1,6 @@
+# Internal
+fixtures/browser-polyfill.min.js
+
 # Logs
 logs
 *.log

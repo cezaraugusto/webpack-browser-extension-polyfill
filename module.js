@@ -6,6 +6,7 @@ const manifestPages = require('./fileReaders/manifestPages')
 class BrowserExtensionPolyfill {
   constructor ({extensionPath}) {
     // User-defined options
+    console.log('aijshdkashdkjsahdkjsahkdjaskhjdashkdashjkd 👀👀👀👀👀👀👀👀👀', extensionPath)
     this.extensionPath = extensionPath
   }
 
@@ -21,12 +22,13 @@ class BrowserExtensionPolyfill {
         writePolyfillToScripts(this.extensionPath)
 
         const pagesDeclared = manifestPages(this.extensionPath)
+        console.log(pagesDeclared)
 
         // For each page declared in the manifest file,
         // we want to have a script tag pointing to the polyfill
-        for (const pathToPageDeclared of pagesDeclared) {
-          writeScriptTagToPage(this.extensionPath, pathToPageDeclared)
-        }
+        // for (const pathToPageDeclared of pagesDeclared) {
+        //   writeScriptTagToPage(this.extensionPath, pathToPageDeclared)
+        // }
         done()
       }
     )
