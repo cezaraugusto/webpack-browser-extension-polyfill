@@ -19,7 +19,6 @@ function resolvePolyfillPathRelative (manifestPath) {
 }
 
 function resolvePolyfillPathRelativeToFile (manifestPath, filePath) {
-  console.log('AJHGHU23G23UY2U32Y32U32UY23672376236723762376', {manifestPath, filePath})
   return path.relative(
     path.dirname(filePath),
     resolvePolyfillPath(manifestPath)

@@ -5,13 +5,11 @@
 
 # webpack-browser-extension-polyfill [![workflow][action-image]][action-url] [![npm][npm-image]][npm-url]
 
-> webpack plugin to develop cross-browser extensions and Mozilla Add-Ons.
+> If you use webpack and want your extension to run on both Firefox and all Chromium-based browsers, use this plugin.
 
-If you use webpack and want your extension to run on both Firefox and all Chromium-based browsers, use this plugin.
+Develop cross-browser extensions using either `chrome.*` or `browser.*` namespaces without worryig about setup. Zero-config support to every file declared in your manifest file. Including background and content scripts.
 
 Via Mozilla's [WebExtension browser API Polyfill](https://github.com/mozilla/webextension-polyfill), this webpack plugin allows extensions that use the Promise-based WebExtension/BrowserExt API, being standardized by the W3 Browser Extensions group to run on Chromium-based browsers with minimal or no changes. [See the polyfill docs](https://github.com/mozilla/webextension-polyfill/#webextension-browser-api-polyfill) for specific info.
-
-Forget manual _polyfilling_. This plugin goal is to add full polyfill support to every file declared in your manifest file. **Including in background and content scripts**. Zero-config for that.
 
 ## Installation
 
@@ -36,13 +34,13 @@ module.exports {
 
 ## How does it work?
 
-Injects the polyfill file at the same folder path level as your manifest file. For background and content scripts declared in your manifest file, a link to the polyfill will also be added to the manifest file at [compile](https://webpack.js.org/api/compiler-hooks/#compile) time.
+The plugin links declared manifest fields (as long as they are relevant) to the polyfill file created by the plugin at the same folder path as the manifest file. The plugin works at [make](https://webpack.js.org/api/compiler-hooks/#make) time.
 
 ## API
 
-### new BrowserExtensionPolyfill(manifestFilePath)
+### new BrowserExtensionPolyfill({manifestPath: /* <path-to-manifest-file> */})
 
-#### manifestFilePath
+#### manifestPath
 
 Type: `string`
 

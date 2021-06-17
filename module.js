@@ -1,33 +1,34 @@
+const path = require('path')
 
 const copyPolyfillToProject = require('./steps/copyPolyfillToProject')
 const writePolyfillToScripts = require('./steps/writePolyfillToManifestScripts')
 const writeScriptTagToPage = require('./steps/writeScriptTagToPage')
 const manifestPages = require('./fileReaders/manifestPages')
 class BrowserExtensionPolyfill {
-  constructor ({extensionPath}) {
+  constructor ({manifestPath}) {
     // User-defined options
-    console.log('aijshdkashdkjsahdkjsahkdjaskhjdashkdashjkd 👀👀👀👀👀👀👀👀👀', extensionPath)
-    this.extensionPath = extensionPath
+    this.manifestPath = manifestPath
   }
 
   apply (compiler) {
-    if (!this.extensionPath) throw new Error('An extension path is required.')
+    if (!this.manifestPath) throw new Error('An manifest path is required.')
 
-    compiler.hooks.done.tapAsync(
+    const extensionPath = path.dirname(this.manifestPath)
+
+    compiler.hooks.make.tapAsync(
       'webpack-browser-extension-polyfill',
       async (_, done) => {
         // During compilation, write to disk the polyfill and set it
         // into background and content scripts accordingly.
-        copyPolyfillToProject(this.extensionPath)
-        writePolyfillToScripts(this.extensionPath)
+        copyPolyfillToProject(extensionPath)
+        writePolyfillToScripts(extensionPath)
 
-        const pagesDeclared = manifestPages(this.extensionPath)
-        console.log(pagesDeclared)
+        const pagesDeclared = manifestPages(extensionPath)
 
         // For each page declared in the manifest file,
         // we want to have a script tag pointing to the polyfill
         for (const pathToPageDeclared of pagesDeclared) {
-          writeScriptTagToPage(this.extensionPath, pathToPageDeclared)
+          writeScriptTagToPage(extensionPath, pathToPageDeclared)
         }
         done()
       }

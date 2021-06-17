@@ -14,7 +14,7 @@ module.exports = {
   },
   plugins: [
     new BrowserExtensionPolyfill({
-      extensionPath: path.resolve(__dirname, '../fixtures')
+      manifestPath: path.resolve(__dirname, '../fixtures/manifest.json')
     }),
     new OpenChromeExtension({
       extensionPath: path.resolve(__dirname, '../fixtures')
