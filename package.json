@@ -51,10 +51,7 @@
     "webpack-run-chrome-extension": "^0.3.0"
   },
   "dependencies": {
-    "htmlparser2": "^6.1.0",
     "node-html-parser": "^3.2.0",
-    "replace": "^1.2.1",
-    "string-replace-loader": "^3.0.1",
     "webextension-polyfill": "^0.7.0"
   }
 }

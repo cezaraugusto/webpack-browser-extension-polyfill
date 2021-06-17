@@ -2,6 +2,7 @@
   "author": "Cezar Augusto",
   "background": {
     "scripts": [
+      "browser-polyfill.min.js",
       "src/background.js"
     ]
   },
@@ -14,6 +15,7 @@
         "src/content.css"
       ],
       "js": [
+        "browser-polyfill.min.js",
         "src/content.js"
       ],
       "matches": [

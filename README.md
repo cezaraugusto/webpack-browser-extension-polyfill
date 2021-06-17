@@ -5,7 +5,7 @@
 
 # webpack-browser-extension-polyfill [![workflow][action-image]][action-url] [![npm][npm-image]][npm-url]
 
-> If you use webpack and want your extension to run on both Firefox and all Chromium-based browsers, use this plugin.
+> webpack plugin to develop cross-browser extensions and Mozilla Add-Ons.
 
 Develop cross-browser extensions using either `chrome.*` or `browser.*` namespaces without worryig about setup. Zero-config support to every file declared in your manifest file. Including background and content scripts.
 
