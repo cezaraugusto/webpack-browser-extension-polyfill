@@ -11,6 +11,8 @@ Develop cross-browser extensions using either `chrome.*` or `browser.*` namespac
 
 Via Mozilla's [WebExtension browser API Polyfill](https://github.com/mozilla/webextension-polyfill), this webpack plugin allows extensions that use the Promise-based WebExtension/BrowserExt API, being standardized by the W3 Browser Extensions group to run on Chromium-based browsers with minimal or no changes. [See the polyfill docs](https://github.com/mozilla/webextension-polyfill/#webextension-browser-api-polyfill) for specific info.
 
+<img width="1200" src="https://user-images.githubusercontent.com/4672033/122479077-e514e180-cfa0-11eb-8646-0f8a6f0055b8.png">
+
 ## Installation
 
 ```
@@ -19,7 +21,7 @@ npm install webpack-browser-extension-polyfill --save-dev
 
 ## Usage
 
-See [webpack.config.js example](./tests/fixtures/webpack.config.js) or clone this project **+** install deps **+** `yarn run demo`.
+See [webpack.config.js example](./tests/fixtures/webpack.config.js) or <kbd>clone this project</kbd> **+** `yarn install` **+** `yarn run demo`.
 
 ```js
 const BrowserExtensionPolyfill = require('webpack-browser-extension-polyfill')
@@ -38,7 +40,7 @@ The plugin links declared manifest fields (as long as they are relevant) to the 
 
 ## API
 
-### new BrowserExtensionPolyfill({manifestPath: <path-to-manifest-file>})
+### new BrowserExtensionPolyfill({manifestPath})
 
 #### manifestPath
 
