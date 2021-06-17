@@ -5,9 +5,9 @@ const path = require('path')
 
 const webpack = require('webpack')
 
-const config = require('./tests/fixtures/webpack.config')
+const config = require('./webpack.config')
 
-const manifestPath = path.resolve(__dirname, 'tests/fixtures/manifest.json')
+const manifestPath = path.resolve(__dirname, 'fixtures/manifest.json')
 const manifest = require(manifestPath)
 const polyfill = 'browser-polyfill.min.js'
 
@@ -16,8 +16,9 @@ jest.mock('webpack-run-chrome-extension')
 
 describe('WebpackBrowserExtensionPolyfill', () => {
   describe('actionable scenarios', () => {
-    beforeAll(() => {
+    beforeAll((done) => {
       webpack(config)
+      done()
     })
 
     test('copy the polyfill file in the same level as the extension manifest', () => {
