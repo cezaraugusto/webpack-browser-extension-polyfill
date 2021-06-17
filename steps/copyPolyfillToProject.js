@@ -1,9 +1,9 @@
 const fs = require('fs')
-const resolveManifest = require('../resolvers/resolveManifest')
 
 const webextensionPolyfill = require
   .resolve('webextension-polyfill/dist/browser-polyfill.min')
 
+const resolveManifest = require('../resolvers/resolveManifest')
 const {resolvePolyfillPath} = require('../resolvers/resolvePolyfill')
 
 module.exports = function (extensionPath) {

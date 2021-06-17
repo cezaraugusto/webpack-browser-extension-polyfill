@@ -4,6 +4,7 @@ const copyPolyfillToProject = require('./steps/copyPolyfillToProject')
 const writePolyfillToScripts = require('./steps/writePolyfillToManifestScripts')
 const writeScriptTagToPage = require('./steps/writeScriptTagToPage')
 const manifestPages = require('./fileReaders/manifestPages')
+
 class BrowserExtensionPolyfill {
   constructor ({manifestPath}) {
     // User-defined options
@@ -15,9 +16,9 @@ class BrowserExtensionPolyfill {
 
     const extensionPath = path.dirname(this.manifestPath)
 
-    compiler.hooks.make.tapAsync(
+    compiler.hooks.thisCompilation.tap(
       'webpack-browser-extension-polyfill',
-      async (_, done) => {
+      () => {
         // During compilation, write to disk the polyfill and set it
         // into background and content scripts accordingly.
         copyPolyfillToProject(extensionPath)
@@ -30,7 +31,6 @@ class BrowserExtensionPolyfill {
         for (const pathToPageDeclared of pagesDeclared) {
           writeScriptTagToPage(extensionPath, pathToPageDeclared)
         }
-        done()
       }
     )
   }

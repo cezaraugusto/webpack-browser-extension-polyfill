@@ -1,6 +1,7 @@
 const fs = require('fs')
 const path = require('path')
-const {parse} = require('node-html-parser');
+
+const {parse} = require('node-html-parser')
 
 const resolveManifest = require('../resolvers/resolveManifest')
 const {resolvePolyfillPathRelativeToFile} = require('../resolvers/resolvePolyfill')
@@ -19,13 +20,13 @@ module.exports = function (extensionPath, filePath) {
 
   const polyfillTag = `<script src="${polyfillPathRelativeToFile}"></script>`
 
-  fs.readFile(filePath, 'utf8', (err, html)=>{
-    if(err) throw new Error(err)
+  fs.readFile(filePath, 'utf8', (err, html) => {
+    if (err) throw new Error(err)
 
-    const root = parse(html, {comment: true});
+    const root = parse(html, {comment: true})
 
-    const body = root.querySelector('body');
-    const firstScript = root.querySelectorAll('script')[0];
+    const body = root.querySelector('body')
+    const firstScript = root.querySelectorAll('script')[0]
 
     // Nothing to do if file has no way to inject scripts as we want
     if (!firstScript || !body) return
@@ -46,17 +47,17 @@ module.exports = function (extensionPath, filePath) {
       if (scriptSource.includes('browser-polyfill')) return
 
       // Actually inject the tag into the project's file
-      firstScript.insertAdjacentHTML('beforebegin', polyfillTag + '\n');
+      firstScript.insertAdjacentHTML('beforebegin', polyfillTag + '\n')
     }
 
     // If file has no scripts we just add it before the ending body tag.
     if (!firstScript) {
-      body.insertAdjacentHTML('beforeend', polyfillTag + '\n');
+      body.insertAdjacentHTML('beforeend', polyfillTag + '\n')
     }
 
     // Override user's file
     fs.writeFile(filePath, root, 'utf8', (error) => {
-      if (error) return console.log(error);
-    });
-  });
+      if (error) return console.log(error)
+    })
+  })
 }

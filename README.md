@@ -34,7 +34,7 @@ module.exports {
 
 ## How does it work?
 
-The plugin links declared manifest fields (as long as they are relevant) to the polyfill file created by the plugin at the same folder path as the manifest file. The plugin works at [make](https://webpack.js.org/api/compiler-hooks/#make) time.
+The plugin links declared manifest fields (as long as they are relevant) to the polyfill file created by the plugin at the same folder path as the manifest file. The plugin works at [thisCompilation](https://webpack.js.org/api/compiler-hooks/#thisCompilation) time.
 
 ## API
 

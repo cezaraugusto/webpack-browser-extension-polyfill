@@ -1,7 +1,8 @@
 const path = require('path')
 
-const BrowserExtensionPolyfill = require('webpack-browser-extension-polyfill')
 const OpenChromeExtension = require('webpack-run-chrome-extension')
+
+const BrowserExtensionPolyfill = require('../../module')
 
 module.exports = {
   cache: false,
