@@ -22,7 +22,10 @@
     "demo": "webpack --watch --config='./tests/fixtures/webpack.config.js'"
   },
   "files": [
-    "module.js"
+    "module.js",
+    "fileReaders",
+    "resolvers",
+    "steps"
   ],
   "keywords": [
     "webpack",
