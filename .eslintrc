@@ -1,7 +1,0 @@
-{
-  "extends": "auditor",
-  "rules": {
-    "node/no-sync": "off",
-    "consistent-return": "off"
-  }
-}
