@@ -1,4 +1,4 @@
-import webpack, {Compiler} from 'webpack'
+import webpack, {type Compiler} from 'webpack'
 
 interface PolyfillPluginInterface {
   manifestPath: string
