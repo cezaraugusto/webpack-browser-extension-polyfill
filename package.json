@@ -25,6 +25,9 @@
     "lint": "eslint \"./**/*.ts*\"",
     "test": "echo \"Warn: no test specified\" && exit 0"
   },
+  "files": [
+    "dist"
+  ],
   "keywords": [
     "webpack",
     "plugin",
