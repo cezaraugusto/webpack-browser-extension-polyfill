@@ -8,7 +8,7 @@
     "node": ">=10"
   },
   "name": "webpack-browser-extension-polyfill",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "webpack plugin to develop cross-browser extensions and Mozilla Add-Ons.",
   "main": "./dist/module.js",
   "types": "./dist/module.d.ts",
